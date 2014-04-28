@@ -88,5 +88,6 @@ module BitBot
     embedded_in :account
     field :currency, type: String
     field :amount, type: Float
+    field :locked, type: Float
   end
 end
