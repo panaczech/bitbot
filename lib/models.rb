@@ -91,7 +91,7 @@ module BitBot
     field :locked, type: Float
 
     def total
-      amount + locked
+      amount.to_f + locked.to_f
     end
   end
 end
