@@ -89,5 +89,9 @@ module BitBot
     field :currency, type: String
     field :amount, type: Float
     field :locked, type: Float
+
+    def total
+      amount + locked
+    end
   end
 end
