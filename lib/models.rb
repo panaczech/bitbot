@@ -24,7 +24,7 @@ module BitBot
     end
 
     def rate
-      agent ? agent.rate : 0
+      agent ? agent.rate : 1
     end
 
     def converted

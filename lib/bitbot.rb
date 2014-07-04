@@ -30,11 +30,13 @@ module BitBot
   def get_adapter_instance(name)
     Class.new do
       attr_reader :logger
+      attr_accessor :rate
       def initialize(options = {})
         @key = ENV["#{name}_key"]
         @secret = ENV["#{name}_secret"]
         @options = options
         @logger = options[:logger]
+        @rate = options[:rate] || 1
       end
 
       include BitBot.definitions[name.to_sym]
@@ -51,6 +53,10 @@ module BitBot
       end
       alias_method :inspect, :to_s
       alias_method :to_json, :to_s
+
+      def rate
+        @rate.is_a?(Proc) ? @rate.call : @rate
+      end
 
       class_eval "def name; :#{name} end"
 
