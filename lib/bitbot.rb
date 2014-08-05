@@ -32,11 +32,11 @@ module BitBot
       attr_reader :logger
       attr_accessor :rate
       def initialize(options = {})
-        @key = ENV["#{name}_key"]
-        @secret = ENV["#{name}_secret"]
         @options = options
         @logger = options[:logger]
         @rate = options[:rate] || 1
+        @key = options[:key] || ENV["#{name}_key"]
+        @secret = options[:secret] || ENV["#{name}_secret"]
       end
 
       include BitBot.definitions[name.to_sym]
